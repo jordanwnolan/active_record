@@ -11,32 +11,23 @@ class AssocOptions
   )
 
   def model_class
-    # ...
     self.class_name.constantize
   end
 
   def table_name
     self.class_name.downcase << 's'
-    # ...
   end
 end
 
 class BelongsToOptions < AssocOptions
   def initialize(name, options = {})
-    # ...
     self.foreign_key = options[:foreign_key]
     self.class_name = options[:class_name]
     self.primary_key = options[:primary_key]
-
-    if self.foreign_key.nil?
-      self.foreign_key = "#{name}_id".to_sym
-    end
-    if self.class_name.nil?
-      self.class_name = "#{name}".capitalize
-    end
-    if self.primary_key.nil?
-      self.primary_key = :id
-    end
+    
+    self.foreign_key = "#{name}_id".to_sym if self.foreign_key.nil?
+    self.class_name = "#{name}".capitalize if self.class_name.nil?
+    self.primary_key = :id if self.primary_key.nil?
   end
 end
 
@@ -49,14 +40,9 @@ class HasManyOptions < AssocOptions
     if self.foreign_key.nil?
       self.foreign_key = "#{self_class_name.singularize.downcase}_id".to_sym
     end
-    if self.class_name.nil?
-      self.class_name = "#{name}".singularize.capitalize
-    end
-    if self.primary_key.nil?
-      self.primary_key = :id
-    end
-
-    # ...
+    
+    self.class_name = "#{name}".singularize.capitalize if self.class_name.nil?
+    self.primary_key = :id if self.primary_key.nil?
   end
 end
 

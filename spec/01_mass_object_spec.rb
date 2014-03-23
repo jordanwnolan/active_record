@@ -30,19 +30,19 @@ describe MassObject do
   #   expect(MyMassObject.attributes).to eq([:x, :y])
   # end
 
-  it "#initialize performs mass-assignment" do
-    obj = MyMassObject.new(:x => "xxx", :y => "yyy")
+  # it "#initialize performs mass-assignment" do
+  #   obj = MyMassObject.new(:x => "xxx", :y => "yyy")
 
-    expect(obj.x).to eq("xxx")
-    expect(obj.y).to eq("yyy")
-  end
+  #   expect(obj.x).to eq("xxx")
+  #   expect(obj.y).to eq("yyy")
+  # end
 
-  it "#initialize doesn't mind string keys" do
-    obj = MyMassObject.new("x" => "xxx", "y" => "yyy")
+  # it "#initialize doesn't mind string keys" do
+  #   obj = MyMassObject.new("x" => "xxx", "y" => "yyy")
 
-    expect(obj.x).to eq("xxx")
-    expect(obj.y).to eq("yyy")
-  end
+  #   expect(obj.x).to eq("xxx")
+  #   expect(obj.y).to eq("yyy")
+  # end
 
 
   # removed during upgrade to rails 4
