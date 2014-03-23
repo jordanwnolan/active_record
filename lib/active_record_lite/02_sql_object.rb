@@ -3,10 +3,6 @@ require_relative '00_attr_accessor_object'
 require_relative '01_mass_object'
 require 'active_support/inflector'
 
-# class MassObject < AttrAccessorObject
-#
-# end
-
 class SQLObject < MassObject
 
   def self.table_name=(table_name)
@@ -37,20 +33,16 @@ class SQLObject < MassObject
     column_names.map { |col| col.to_sym}
   end
 
-  # my_attr_accessor(*columns)
-
   def self.all
     #...
     h_doc = <<-SQL
-    SELECT
-    #{self.table_name}.*
-    FROM
-    #{self.table_name}
+      SELECT
+      #{self.table_name}.*
+      FROM
+      #{self.table_name}
     SQL
 
     results = DBConnection.execute(h_doc)
-    # puts "IN ALL"
-    # p results
     parse_all(results)
   end
 
