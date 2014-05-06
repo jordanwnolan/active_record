@@ -2,7 +2,6 @@ require_relative '03_searchable'
 require 'active_support/inflector'
 require 'debugger'
 
-# Phase IVa
 class AssocOptions
   attr_accessor(
     :foreign_key,
